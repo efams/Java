@@ -1,0 +1,82 @@
+public class Cisterna {
+	int id;
+	int maxSize;
+	int actSize;
+	
+	
+	/**
+	 * costruttore che  istanza un oggetto Cisterna passando :
+	 * @param id identificatore cisterna
+	 * @param maxSize capacità cisterna
+	 * e pone lo stato della cisterna a 0 (actSize)
+	 */
+	Cisterna(int id,int maxSize){
+		this.id=id;
+		this.maxSize=maxSize;
+		actSize=0;
+	}
+	/**
+	 * costruttore che istanza un oggetto Cisterna  passando:
+	 * @param id identificatore cisterna
+	 * @param maxSize capacità cisterna
+	 * @param actSize stato attuale della cisterna
+	 */
+	Cisterna(int id,int maxSize,int actSize){
+		this.id=id;
+		this.maxSize=maxSize;
+		this.actSize=actSize;
+	}
+	/**
+	 * 
+	 * @return id identificatore cisterna
+	 */
+	int getId(){
+		return id;
+	}
+	/**
+	 * 
+	 * @return maxSize capacità cisterna
+	 */
+	int getMaxSize(){
+		return maxSize;
+	}
+	/**
+	 * 
+	 * @return actSize stato attuale della cisterna
+	 */
+	int getActSize(){
+		return actSize;
+	}
+	/**
+	 * aggiunge un valore allo stato attuale della cisterna
+	 * @param size valore da aggiungere alla cisterna
+	 * @return vero se actSize<=maxSize, falso altrimenti
+	 */
+	boolean aggiungiValore(int size){
+		actSize=size;
+		if(actSize>maxSize){
+			actSize=maxSize;
+			return false;//gestione errore
+		}
+		return true;
+	}
+	/**
+	 * leva un valore allo stato attuale della cisterna
+	 * @param size valore da prelevare allo stato attuale della cisterna(actSize)	
+	 * @return
+	 */
+	int togliValore(int size){
+		if(actSize-size>0)return actSize-size;
+		return actSize;//gestione errore
+		
+	}
+	/**
+	 * verifica se la cisterna in analisi è equivalente alla cisterna inserita in parametro
+	 * @param c cisterna
+	 * @return true se equivalenti (capacità residuta uguale)
+	 */
+	boolean equivalente(Cisterna c){
+		if((this.maxSize-this.actSize)==(c.maxSize-c.actSize))return true;
+		return false;
+	}
+}
